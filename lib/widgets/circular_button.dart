@@ -17,7 +17,7 @@ class _CircularButtonsRowState extends State<CircularButtonsRow> {
         scrollDirection: Axis.horizontal, // Horizontal scrolling
         itemCount: 24, // 24 hours in a day
         itemBuilder: (context, index) {
-          // Calculate the hour for the current button
+
           int hour = index % 12;
           String time = (hour == 0) ? '12:00\n AM' : '$hour:00 ' + ((index < 12) ? '\nAM' : '\nPM');
 
@@ -25,14 +25,14 @@ class _CircularButtonsRowState extends State<CircularButtonsRow> {
             padding: EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
-                // Toggle the selection state
+
                 setState(() {
                   isSelected[index] = !isSelected[index];
                 });
               },
               child: Container(
                 padding: EdgeInsets.fromLTRB(11, 15, 11, 11),
-                width: 60, // Adjust the size of the circular button
+                width: 60,
                 height: 60,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,

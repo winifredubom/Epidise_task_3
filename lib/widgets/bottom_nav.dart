@@ -9,7 +9,7 @@ import 'package:task_3/screens/profile/profile_screen.dart';
 import '../routes/routes.dart';
 
 class BottomNav extends StatefulWidget {
-  AppRoutes ? appRoutes; // Add this line
+  AppRoutes ? appRoutes;
 
   BottomNav({super.key,   this.appRoutes});
 

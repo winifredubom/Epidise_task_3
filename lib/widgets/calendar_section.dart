@@ -12,7 +12,7 @@ class CalendarSection extends StatefulWidget {
 class _CalendarSectionState extends State<CalendarSection> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
-  DateTime? _selectedDay;
+  Set<DateTime> _selectedDays = {};
 
   String getCurrentMonthYearInWords() {
     final monthFormat = DateFormat('MMMM');
@@ -20,6 +20,16 @@ class _CalendarSectionState extends State<CalendarSection> {
     final monthName = monthFormat.format(_focusedDay);
     final year = yearFormat.format(_focusedDay);
     return '$monthName $year';
+  }
+
+  onDaySelected(DateTime selectedDay, DateTime focusedDay) {
+    setState(() {
+      if (_selectedDays.contains(selectedDay)) {
+        _selectedDays.remove(selectedDay);
+      } else {
+        _selectedDays.add(selectedDay);
+      }
+    });
   }
 
 
@@ -109,7 +119,6 @@ class _CalendarSectionState extends State<CalendarSection> {
                 focusedDay: DateTime.now(),
                 calendarFormat: _calendarFormat,
                 selectedDayPredicate: (day) {
-                  // Replace with your logic to mark days with schedules
                   return false;
                 },
                 onFormatChanged: (format) {
@@ -122,41 +131,37 @@ class _CalendarSectionState extends State<CalendarSection> {
                     _focusedDay = focusedDay;
                   });
                 },
-                onDaySelected: (selectedDay, focusedDay) {
-                  setState(() {
-                    _selectedDay = selectedDay;
-                  });
-                },
+                  onDaySelected: onDaySelected,
                 headerVisible: false,
                 daysOfWeekStyle: const  DaysOfWeekStyle(
                   weekdayStyle: TextStyle(
                     fontSize: 15,
                     fontFamily: 'Poppins',
-                    color: Color(0xFF000000), // Set your preferred text color
-                    fontWeight: FontWeight.w400, // Set font weight
+                    color: Color(0xFF000000),
+                    fontWeight: FontWeight.w400,
                   ),
                   weekendStyle: TextStyle(
                     fontSize: 15,
                     fontFamily: 'Poppins',
-                    color: Color(0xFF000000), // Set your preferred text color
-                    fontWeight: FontWeight.w400, // Set font weight
+                    color: Color(0xFF000000),
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
                 calendarStyle: const CalendarStyle(
                   defaultTextStyle: TextStyle(
                     fontSize: 15,
-                    color: Color(0xFF000000), // Set your preferred text color
-                    fontWeight: FontWeight.w400,  // Set your preferred text color for the days of the month
+                    color: Color(0xFF000000),
+                    fontWeight: FontWeight.w400,
                   ),
                   selectedTextStyle: TextStyle(
                     fontSize: 15,
-                    color: Color(0xFF000000), // Set your preferred text color
-                    fontWeight: FontWeight.w400, // Set your preferred text color for selected days
+                    color: Color(0xFF000000),
+                    fontWeight: FontWeight.w400,
                   ),
                   todayTextStyle: TextStyle(
                     fontSize: 15,
-                    color: Colors.white, // Set your preferred text color
-                    fontWeight: FontWeight.w400,  // Set your preferred text color for today's date
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
                   ),
                   cellPadding: EdgeInsets.fromLTRB(0, 10, 0, 0)
                 ),

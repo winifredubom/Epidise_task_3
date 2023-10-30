@@ -29,7 +29,7 @@ class _DateScrollState extends State<DateScroll> {
       final DateTime currentDate = firstDayOfMonth.add(Duration(days: i));
       final bool isSelected = currentDate == selectedDate;
 
-      // Wrap each date in a GestureDetector to make them selectable
+
       dateWidgets.add(
         GestureDetector(
           onTap: () {
@@ -74,7 +74,7 @@ class _DateScrollState extends State<DateScroll> {
         ),
       );
 
-      // Add spacing between dates
+
       dateWidgets.add(SizedBox(width: dateSpacing));
     }
 

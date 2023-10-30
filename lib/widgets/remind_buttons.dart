@@ -16,23 +16,22 @@ class _Remind_ButtonsState extends State<Remind_Buttons> {
     return Container(
       height: 80,
       child: ListView.builder(
-        scrollDirection: Axis.horizontal, // Horizontal scrolling
-        itemCount: 60, // 60 minutes in an hour
+        scrollDirection: Axis.horizontal,
+        itemCount: 60,
         itemBuilder: (context, index) {
-          String minute = index.toString().padLeft(2, '0'); // Format minutes with leading zero
+          String minute = index.toString().padLeft(2, '0');
 
           return Padding(
             padding: EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
-                // Toggle the selection state
                 setState(() {
                   isSelected[index] = !isSelected[index];
                 });
               },
               child: Container(
                 padding: EdgeInsets.fromLTRB(11, 15, 11, 11),
-                width: 60, // Adjust the size of the circular button
+                width: 60,
                 height: 60,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,

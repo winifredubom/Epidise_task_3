@@ -796,7 +796,7 @@ class _Home_screenState extends State<Home_screen> {
                                               Padding(
                                                 padding: const EdgeInsets.fromLTRB(28, 0, 32, 0),
                                                 child: LinearProgressIndicator(
-                                                  value: 0.60, // 0.0 to 1.0 represents 0% to 100%
+                                                  value: 0.60,
                                                   backgroundColor: Colors.grey.shade300, // Background color
                                                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white), // Fill color
                                                 ),
@@ -978,8 +978,7 @@ class MyBottomSheetContent extends StatelessWidget {
           children: [
             // Calendar Section
              CalendarSection(),
-            // Avail
-            // able Time Slots Container
+            // Available Time Slots Container
              Container(
                 padding:EdgeInsets.only(left: 16),
                   child: Column(
@@ -1034,7 +1033,7 @@ class MyBottomSheetContent extends StatelessWidget {
                 )),
               ),
               onPressed: () {
-                // Save the information and close the bottom sheet
+
                 Navigator.of(context).pop();
               },
               child: Text('Confirm',
@@ -1379,7 +1378,7 @@ class _MiniExpandableContainer1State extends State<MiniExpandableContainer> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(28, 0, 32, 0),
                             child: LinearProgressIndicator(
-                              value: 0.60, // 0.0 to 1.0 represents 0% to 100%
+                              value: 0.60,
                               backgroundColor: Colors.grey.shade300, // Background color
                               valueColor: AlwaysStoppedAnimation<Color>(Colors.white), // Fill color
                             ),
